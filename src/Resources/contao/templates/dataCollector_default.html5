@@ -1,0 +1,16 @@
+<div id="dataCollector_<?php echo $this->str_dataCollectorAlias; ?>">
+	<div
+		class="dataCollector <?php echo $this->str_dataCollectorAlias; ?>"
+		data-lsjs-component="formReviewer cajaxCaller"
+		data-misc-close-form-initially="<?php echo $this->bln_dataHasBeenStored ? '1' : ''; ?>"
+		data-lsjs-cajaxCallerOptions="
+		{
+			'obj_cajaxRequestData': {
+				'requestedElementID': 'dataCollector_<?php echo $this->str_dataCollectorAlias; ?>'
+			}
+		}
+		"
+	>
+		<?php echo $this->form; ?>
+	</div>
+</div>

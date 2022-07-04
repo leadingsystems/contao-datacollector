@@ -5,4 +5,4 @@ CREATE TABLE `tl_ls_data_collector` (
   `title` varchar(255) NOT NULL default '',
   `formId` int(10) unsigned NOT NULL default '0'
   PRIMARY KEY  (`id`),
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT;

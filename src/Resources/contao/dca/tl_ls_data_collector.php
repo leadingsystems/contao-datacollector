@@ -2,15 +2,18 @@
 
 namespace LeadingSystems\DataCollector;
 
+use Contao\DataContainer;
+use Contao\DC_Table;
+
 $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 	'config' => array(
-		'dataContainer' => 'Table'
+		'dataContainer' => DC_Table::class
 	),
 	
 	'list' => array(
 		'sorting' => array(
-			'mode' => 1,
-			'flag' => 1,
+			'mode' => DataContainer::MODE_SORTED,
+			'flag' => DataContainer::SORT_INITIAL_LETTER_ASC,
 			'fields' => array('title'),
 			'disableGrouping' => true,
 			'panelLayout' => 'sort,search,limit'			

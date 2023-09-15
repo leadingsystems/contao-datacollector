@@ -7,9 +7,16 @@ use Contao\DC_Table;
 
 $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 	'config' => array(
-		'dataContainer' => DC_Table::class
+		'dataContainer' => DC_Table::class,
+        'sql' => array
+        (
+            'keys' => array
+            (
+                'id' => 'primary'
+            )
+        )
 	),
-	
+
 	'list' => array(
 		'sorting' => array(
 			'mode' => DataContainer::MODE_SORTED,
@@ -59,23 +66,30 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 		
 		)	
 	),
-	
+
 	'palettes' => array(
 		'default' => '{title_legend},title,alias;formId;'
 	),
-	
+
 	'fields' => array(
-		'title' => array(
+
+        'id' => array (
+            'sql'                     => "int(10) unsigned NOT NULL auto_increment"
+        ),
+
+        'title' => array(
+		    'sql'                     => "varchar(255) NOT NULL default ''",
 			'label' => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['title'],
 			'exclude' => true,
 			'inputType' => 'text',
 			'eval' => array('mandatory' => true, 'tl_class' => 'w50', 'maxlength'=>255),
 			'sorting' => true,
-			'flag' => 11,
+			'flag' => DataContainer::SORT_ASC,
 			'search' => true
 		),
-		
+
 		'alias' => array (
+		    'sql'                     => "varchar(128) BINARY NOT NULL default ''",
 			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['alias'],
 			'exclude' => true,
 			'inputType'               => 'text',
@@ -84,16 +98,21 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 				array('LeadingSystems\DataCollector\ls_data_collector', 'generateAlias')
 			),
 			'sorting' => true,
-			'flag' => 11,
+			'flag' => DataContainer::SORT_ASC,
 			'search' => true
 		),
 
 		'formId' => array(
+		    'sql'                     => "int(10) unsigned NOT NULL default '0'",
 			'label' => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['formId'],
 			'exclude' => true,
 			'inputType' => 'select',
 			'foreignKey' => 'tl_form.title',
 			'filter' => true
+		),
+
+        'tstamp' => array(
+		    'sql'                     => "int(10) unsigned NOT NULL default '0'",
 		)
 	)
 );

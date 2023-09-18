@@ -7,7 +7,7 @@ use Contao\DC_Table;
 
 $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 	'config' => array(
-		'dataContainer' => DC_Table::class,
+		'dataContainer'               => DC_Table::class,
         'sql' => array
         (
             'keys' => array
@@ -19,11 +19,11 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 
 	'list' => array(
 		'sorting' => array(
-			'mode' => DataContainer::MODE_SORTED,
-			'flag' => DataContainer::SORT_INITIAL_LETTER_ASC,
-			'fields' => array('title'),
-			'disableGrouping' => true,
-			'panelLayout' => 'sort,search,limit'			
+			'mode'                    => DataContainer::MODE_SORTED,
+			'flag'                    => DataContainer::SORT_INITIAL_LETTER_ASC,
+			'fields'                  => array('title'),
+			'disableGrouping'         => true,
+			'panelLayout'             => 'sort,search,limit'
 		),
 		
 		'label' => array(

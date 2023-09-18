@@ -5,8 +5,10 @@ namespace LeadingSystems\DataCollector;
 use Contao\DataContainer;
 use Contao\DC_Table;
 
-$GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
-	'config' => array(
+$GLOBALS['TL_DCA']['tl_ls_data_collector'] = array
+(
+	'config' => array
+    (
 		'dataContainer'               => DC_Table::class,
         'sql' => array
         (
@@ -17,8 +19,10 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
         )
 	),
 
-	'list' => array(
-		'sorting' => array(
+	'list' => array
+    (
+		'sorting' => array
+        (
 			'mode'                    => DataContainer::MODE_SORTED,
 			'flag'                    => DataContainer::SORT_INITIAL_LETTER_ASC,
 			'fields'                  => array('title'),
@@ -26,12 +30,14 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 			'panelLayout'             => 'sort,search,limit'
 		),
 		
-		'label' => array(
+		'label' => array
+        (
 			'fields' => array('title', 'alias'),
 			'format' => '<strong>%s</strong> <span style="font-style: italic;">(Alias: %s)</span>'
 		),
 		
-		'global_operations' => array(
+		'global_operations' => array
+        (
 			'all' => array
 			(
 				'label'               => &$GLOBALS['TL_LANG']['MSC']['all'],
@@ -41,24 +47,29 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 			)
 		),
 		
-		'operations' => array(
-			'edit' => array(
+		'operations' => array
+        (
+			'edit' => array
+            (
 				'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['edit'],
 				'href'                => 'act=edit',
 				'icon'                => 'edit.gif'
 			),
-			'copy' => array(
+			'copy' => array
+            (
 				'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['copy'],
 				'href'                => 'act=copy',
 				'icon'                => 'copy.gif'
 			),
-			'delete' => array(
+			'delete' => array
+            (
 				'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['delete'],
 				'href'                => 'act=delete',
 				'icon'                => 'delete.gif',
 				'attributes'          => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
 			),
-			'show' => array(
+			'show' => array
+            (
 				'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['show'],
 				'href'                => 'act=show',
 				'icon'                => 'show.gif'
@@ -67,17 +78,19 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 		)	
 	),
 
-	'palettes' => array(
+	'palettes' => array
+    (
 		'default' => '{title_legend},title,alias;formId;'
 	),
 
-	'fields' => array(
-
-        'id' => array (
+	'fields' => array
+    (
+        'id' => array
+        (
             'sql'                     => "int(10) unsigned NOT NULL auto_increment"
         ),
-
-        'title' => array(
+        'title' => array
+        (
 			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['title'],
 			'exclude'                 => true,
             'search'                  => true,
@@ -87,8 +100,8 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
             'eval'                    => array('mandatory' => true, 'tl_class' => 'w50', 'maxlength'=>255),
             'sql'                     => "varchar(255) NOT NULL default ''"
 		),
-
-		'alias' => array (
+		'alias' => array
+        (
 			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['alias'],
 			'exclude'                 => true,
             'search'                  => true,
@@ -97,12 +110,13 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'alnum', 'doNotCopy'=>true, 'spaceToUnderscore'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
             'sql'                     => "varchar(128) BINARY NOT NULL default ''",
-			'save_callback' => array (
+			'save_callback'           => array
+            (
 				array('LeadingSystems\DataCollector\ls_data_collector', 'generateAlias')
 			)
 		),
-
-		'formId' => array(
+		'formId' => array
+        (
 			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['formId'],
 			'exclude'                 => true,
             'filter'                  => true,
@@ -110,8 +124,8 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
 			'foreignKey'              => 'tl_form.title',
             'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
-
-        'tstamp' => array(
+        'tstamp' => array
+        (
 		    'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		)
 	)

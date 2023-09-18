@@ -78,41 +78,41 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array(
         ),
 
         'title' => array(
-		    'sql'                     => "varchar(255) NOT NULL default ''",
-			'label' => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['title'],
-			'exclude' => true,
-			'inputType' => 'text',
-			'eval' => array('mandatory' => true, 'tl_class' => 'w50', 'maxlength'=>255),
-			'sorting' => true,
-			'flag' => DataContainer::SORT_ASC,
-			'search' => true
+			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['title'],
+			'exclude'                 => true,
+            'search'                  => true,
+			'sorting'                 => true,
+            'inputType'               => 'text',
+			'flag'                    => DataContainer::SORT_ASC,
+            'eval'                    => array('mandatory' => true, 'tl_class' => 'w50', 'maxlength'=>255),
+            'sql'                     => "varchar(255) NOT NULL default ''"
 		),
 
 		'alias' => array (
-		    'sql'                     => "varchar(128) BINARY NOT NULL default ''",
 			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['alias'],
-			'exclude' => true,
+			'exclude'                 => true,
+            'search'                  => true,
+            'sorting'                 => true,
+            'flag'                    => DataContainer::SORT_ASC,
 			'inputType'               => 'text',
 			'eval'                    => array('rgxp'=>'alnum', 'doNotCopy'=>true, 'spaceToUnderscore'=>true, 'maxlength'=>128, 'tl_class'=>'w50'),
+            'sql'                     => "varchar(128) BINARY NOT NULL default ''",
 			'save_callback' => array (
 				array('LeadingSystems\DataCollector\ls_data_collector', 'generateAlias')
-			),
-			'sorting' => true,
-			'flag' => DataContainer::SORT_ASC,
-			'search' => true
+			)
 		),
 
 		'formId' => array(
-		    'sql'                     => "int(10) unsigned NOT NULL default '0'",
-			'label' => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['formId'],
-			'exclude' => true,
-			'inputType' => 'select',
-			'foreignKey' => 'tl_form.title',
-			'filter' => true
+			'label'                   => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['formId'],
+			'exclude'                 => true,
+            'filter'                  => true,
+			'inputType'               => 'select',
+			'foreignKey'              => 'tl_form.title',
+            'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		),
 
         'tstamp' => array(
-		    'sql'                     => "int(10) unsigned NOT NULL default '0'",
+		    'sql'                     => "int(10) unsigned NOT NULL default '0'"
 		)
 	)
 );

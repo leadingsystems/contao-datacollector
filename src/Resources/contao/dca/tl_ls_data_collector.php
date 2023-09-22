@@ -10,6 +10,7 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array
     'config' => array
     (
         'dataContainer'               => DC_Table::class,
+        'enableVersioning'            => true,
         'sql' => array
         (
             'keys' => array

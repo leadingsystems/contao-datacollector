@@ -50,26 +50,26 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['edit'],
                 'href'                => 'act=edit',
-                'icon'                => 'edit.gif'
+                'icon'                => 'edit.svg'
             ),
             'copy' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['copy'],
                 'href'                => 'act=copy',
-                'icon'                => 'copy.gif'
+                'icon'                => 'copy.svg'
             ),
             'delete' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['delete'],
                 'href'                => 'act=delete',
-                'icon'                => 'delete.gif',
+                'icon'                => 'delete.svg',
                 'attributes'          => 'onclick="if (!confirm(\'' . $GLOBALS['TL_LANG']['MSC']['deleteConfirm'] . '\')) return false; Backend.getScrollOffset();"'
             ),
             'show' => array
             (
                 'label'               => &$GLOBALS['TL_LANG']['tl_ls_data_collector']['show'],
                 'href'                => 'act=show',
-                'icon'                => 'show.gif'
+                'icon'                => 'show.svg'
             )
         )
     ),

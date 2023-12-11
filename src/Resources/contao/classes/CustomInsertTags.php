@@ -18,7 +18,7 @@ class CustomInsertTags {
 			case 'Output':
 				$var_dataCollectorIdOrAlias = $params;
 				$obj_dataCollector = new DataCollector($var_dataCollectorIdOrAlias);
-				return \Controller::replaceInsertTags($obj_dataCollector->output(), false);
+				return \System::getContainer()->get('contao.insert_tag.parser')->replaceInline($obj_dataCollector->output());
 				break;
 		}
 

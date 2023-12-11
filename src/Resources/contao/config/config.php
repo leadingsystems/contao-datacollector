@@ -2,7 +2,9 @@
 
 namespace LeadingSystems\DataCollector;
 
-array_insert($GLOBALS['BE_MOD'], 0, array(
+use Contao\ArrayUtil;
+
+ArrayUtil::arrayInsert($GLOBALS['BE_MOD'], 0, array(
 	'ls_dataCollector' => array(
 		'ls_data_collector' => array(
 			'tables' => array('tl_ls_data_collector')

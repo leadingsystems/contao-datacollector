@@ -1,7 +1,7 @@
 Leading Systems DataCollector bundle for Contao 4 changelog
 ===========================================
 
-### 2.1.0 (nyr: 2023-10-02)
+### 2.1.0 (2023-12-11)
  * Enable versioning
  * Fix some issues for Contao 5
  * Removed Contao 4.9 compatibility

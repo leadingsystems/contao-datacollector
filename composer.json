@@ -1,6 +1,6 @@
 {
   "name": "leadingsystems/contao-datacollector",
-  "description": "Leading Systems DataCollector as a Contao 4 bundle",
+  "description": "Leading Systems DataCollector as a Contao bundle",
   "keywords": [
     "contao",
     "leading systems",
@@ -9,8 +9,8 @@
   "type": "contao-bundle",
   "license": "proprietary",
   "require": {
-    "php": "^7.4 || ^8.0",
-    "contao/core-bundle": "^4.13 || ^5.0"
+    "php": "^8.1",
+    "contao/core-bundle": "^5.0"
   },
   "autoload": {
     "psr-4": {

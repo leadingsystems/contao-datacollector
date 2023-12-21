@@ -2,8 +2,11 @@
 
 namespace LeadingSystems\DataCollector;
 
+use Contao\Backend;
+use Contao\Database;
 use Contao\DataContainer;
 use Contao\DC_Table;
+use Contao\StringUtil;
 
 $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array
 (
@@ -125,20 +128,20 @@ $GLOBALS['TL_DCA']['tl_ls_data_collector'] = array
     )
 );
 
-class ls_data_collector extends \Backend {
+class ls_data_collector extends Backend {
     public function __construct() {
         parent::__construct();
     }
 
-    public function generateAlias($varValue, \DataContainer $dc) {
+    public function generateAlias($varValue, DataContainer $dc) {
         $autoAlias = false;
 
         // Generate an alias if there is none
         if ($varValue == '') {
             $autoAlias = true;
-            $varValue = \StringUtil::generateAlias($dc->activeRecord->title);
+            $varValue = StringUtil::generateAlias($dc->activeRecord->title);
         }
-        $objAlias = \Database::getInstance()
+        $objAlias = Database::getInstance()
             ->prepare("
                 SELECT	id
                 FROM	tl_ls_data_collector

@@ -2,6 +2,8 @@
 
 namespace LeadingSystems\DataCollector;
 
+use Contao\System;
+
 class CustomInsertTags {
 	public function __construct() {
 	}
@@ -18,7 +20,7 @@ class CustomInsertTags {
 			case 'Output':
 				$var_dataCollectorIdOrAlias = $params;
 				$obj_dataCollector = new DataCollector($var_dataCollectorIdOrAlias);
-				return \System::getContainer()->get('contao.insert_tag.parser')->replaceInline($obj_dataCollector->output());
+				return System::getContainer()->get('contao.insert_tag.parser')->replaceInline($obj_dataCollector->output());
 				break;
 		}
 

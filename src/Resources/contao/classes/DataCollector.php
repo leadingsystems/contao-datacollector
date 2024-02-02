@@ -48,17 +48,12 @@ class DataCollector {
 	}
 
 	public function storeData($arr_submittedData) {
-
-        $session = System::getContainer()->get('dataCollector.session')->getSession();
-        $session_dataCollector =  $session->get('lsDataCollector', []);
-
-		if (!isset($session_dataCollector['collectors'][$this->arr_settings['alias']])) {
-            $session_dataCollector['collectors'][$this->arr_settings['alias']] = array();
-            $session->set('lsDataCollector', $session_dataCollector);
+		if (!isset($_SESSION['ls_dataCollector']['collectors'][$this->arr_settings['alias']])) {
+			$_SESSION['ls_dataCollector']['collectors'][$this->arr_settings['alias']] = array();
 		}
 
 		foreach($arr_submittedData as $str_key => $str_value) {
-			$var_currentStoragePointer = &$session_dataCollector['collectors'][$this->arr_settings['alias']];
+			$var_currentStoragePointer = &$_SESSION['ls_dataCollector']['collectors'][$this->arr_settings['alias']];
 
 			$arr_keyParts = explode('--', $str_key);
 			foreach ($arr_keyParts as $str_keyPart) {
@@ -76,7 +71,7 @@ class DataCollector {
 			foreach ($GLOBALS['LS_HOOKS']['ls_dataCollector']['storeData'] as $mccb) {
 				$objMccb = System::importStatic($mccb[0]);
 				$objMccb->{$mccb[1]}(
-                    $session_dataCollector['collectors'][$this->arr_settings['alias']],
+					$_SESSION['ls_dataCollector']['collectors'][$this->arr_settings['alias']],
 					$arr_submittedData,
 					$this->arr_settings
 				);
@@ -85,8 +80,6 @@ class DataCollector {
 	}
 
 	private function check_dataHasBeenStored() {
-        $session = System::getContainer()->get('dataCollector.session')->getSession();
-        $session_dataCollector =  $session->get('lsDataCollector', []);
-		return isset($session_dataCollector['collectors'][$this->arr_settings['alias']]);
+		return isset($_SESSION['ls_dataCollector']['collectors'][$this->arr_settings['alias']]);
 	}
 }

@@ -2,7 +2,6 @@
 namespace LeadingSystems\DataCollector;
 
 use Contao\Database;
-use Contao\System;
 use Contao\Widget;
 
 class LsController {

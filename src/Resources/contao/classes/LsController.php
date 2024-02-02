@@ -2,7 +2,6 @@
 namespace LeadingSystems\DataCollector;
 
 use Contao\Database;
-use Contao\System;
 use Contao\Widget;
 
 class LsController {
@@ -66,15 +65,12 @@ class LsController {
 			return $obj_widget;
 		}
 
-        $session = System::getContainer()->get('dataCollector.session')->getSession();
-        $session_dataCollector =  $session->get('lsDataCollector', []);
-
 		/*
 		 * A form could have multiple data collectors assigned but since all data collectors depending on the same
 		 * form would have the same form data stored, we only have to consider the data stored in the first data collector
 		 * when we prefill the form field.
 		 */
-		$var_currentStoragePointer = &$session_dataCollector['collectors'][key($this->arr_formCollectorMapping[$obj_form->id])];
+		$var_currentStoragePointer = &$_SESSION['ls_dataCollector']['collectors'][key($this->arr_formCollectorMapping[$obj_form->id])];
 
 		$arr_keyParts = explode('--', $obj_widget->name);
 		foreach ($arr_keyParts as $str_keyPart) {

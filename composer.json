@@ -29,7 +29,6 @@
   "extra": {
     "contao-manager-plugin": "LeadingSystems\\DataCollectorBundle\\ContaoManager\\Plugin",
     "branch-alias": {
-//      @toDo: change to 3.0.x-dev before release
       "dev-master": "2.1.x-dev",
       "dev-develop": "2.1.x-dev"
     }

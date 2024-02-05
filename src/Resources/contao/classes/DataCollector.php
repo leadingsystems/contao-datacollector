@@ -2,6 +2,11 @@
 
 namespace LeadingSystems\DataCollector;
 
+use Contao\Controller;
+use Contao\Database;
+use Contao\FrontendTemplate;
+use Contao\System;
+
 class DataCollector {
 	private $var_aliasOrId = null;
 	private $arr_settings = null;
@@ -18,7 +23,7 @@ class DataCollector {
 
 	private function getDataCollectorSettings() {
 		$bln_getDataCollectorByAlias = preg_match('/[^0-9]/', $this->var_aliasOrId);
-		$obj_dbres = \Database::getInstance()
+		$obj_dbres = Database::getInstance()
 			->prepare("
 				SELECT		*
 				FROM		`tl_ls_data_collector`
@@ -35,8 +40,8 @@ class DataCollector {
 	}
 
 	public function output() {
-		$obj_template = new \FrontendTemplate('dataCollector_default');
-		$obj_template->form = \Controller::getForm($this->arr_settings['formId']);
+		$obj_template = new FrontendTemplate('dataCollector_default');
+		$obj_template->form = Controller::getForm($this->arr_settings['formId']);
 		$obj_template->bln_dataHasBeenStored = $this->check_dataHasBeenStored();
 		$obj_template->str_dataCollectorAlias = $this->arr_settings['alias'];
 		return $obj_template->parse();
@@ -64,7 +69,7 @@ class DataCollector {
 
 		if (isset($GLOBALS['LS_HOOKS']['ls_dataCollector']['storeData']) && is_array($GLOBALS['LS_HOOKS']['ls_dataCollector']['storeData'])) {
 			foreach ($GLOBALS['LS_HOOKS']['ls_dataCollector']['storeData'] as $mccb) {
-				$objMccb = \System::importStatic($mccb[0]);
+				$objMccb = System::importStatic($mccb[0]);
 				$objMccb->{$mccb[1]}(
 					$_SESSION['ls_dataCollector']['collectors'][$this->arr_settings['alias']],
 					$arr_submittedData,

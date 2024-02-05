@@ -1,6 +1,9 @@
 <?php
 namespace LeadingSystems\DataCollector;
 
+use Contao\Database;
+use Contao\Widget;
+
 class LsController {
 	private $arr_formCollectorMapping = array();
 
@@ -32,7 +35,7 @@ class LsController {
 	}
 
 	private function getFormCollectorMapping() {
-		$obj_dbres_dataCollectors = \Database::getInstance()
+		$obj_dbres_dataCollectors = Database::getInstance()
 			->prepare("
 				SELECT	`id`,
 						`alias`,
@@ -57,7 +60,7 @@ class LsController {
 		}
 	}
 
-	public function loadFormField(\Widget $obj_widget, $str_formId, $arr_data, $obj_form) {
+	public function loadFormField(Widget $obj_widget, $str_formId, $arr_data, $obj_form) {
 		if (!isset($this->arr_formCollectorMapping[$obj_form->id])) {
 			return $obj_widget;
 		}

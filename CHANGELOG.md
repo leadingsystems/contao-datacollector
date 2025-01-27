@@ -1,7 +1,7 @@
 Leading Systems DataCollector bundle for Contao changelog
 ===========================================
 
-### 3.0.0 (nry: 2024-02-02)
+### 3.0.0 (2025-01-27)
  * Removed Contao 4.x compatibility
  * Removed TL_MODE
  * Fix some issues for Contao 5
